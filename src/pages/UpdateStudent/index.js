@@ -27,9 +27,16 @@ export default function UpdateSubject(props) {
 
     const list_course = [
         { course: 'Selecione um curso' },
+        { course: 'Médio integrado com Edificações' },
         { course: 'Médio integrado com Informática' },
         { course: 'Médio integrado com Meio Ambiente' },
-        { course: 'Subsequente de Informática' },
+        { course: 'Médio integrado com Eletromecânica' },
+        { course: 'Subsequente em Informática' },
+        { course: 'Subsequente em Eletromecânica' },
+        { course: 'Subsequente em Edificações' },
+        { course: 'Licenciatura em Ciências Biológicas' },
+        { course: 'Licenciatura em Matemática' },
+        { course: 'Tecnologia em Análise e Desenvolvimento de Sistemas' },
     ];
 
     const history = useHistory();
