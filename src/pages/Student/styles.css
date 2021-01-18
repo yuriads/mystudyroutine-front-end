@@ -1,0 +1,106 @@
+.list-student-container {
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 30px;
+    margin: 10px auto;
+}
+
+.list-student-container header {
+    display: flex;
+    align-items: center;
+}
+
+.list-student-container header span {
+    font-size: 20px;
+    margin-left: 24px;
+}
+
+.list-student-container header img {
+    height: 64px;
+}
+
+.list-student-container header a {
+    width: 100px;
+    margin-left: 8px;
+}
+
+.list-student-container header section {
+    display: flex;
+    margin-left: auto;
+    margin-top: 0;
+}
+
+.list-student-container h1 {
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+
+.list-student-container h2 {
+    padding-bottom: 08px;
+}
+
+.list-student-container h2:first-child {
+    padding-bottom: 20px;
+}
+
+
+.button {
+    margin: 0px;
+}
+
+
+.list-student-container table {
+    width: 100%;
+    max-width: 100%;
+    
+    text-align: left;
+}
+
+.list-students {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 24px;
+}
+
+.list-students table {
+    background: #fff;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+.list-students th {
+    padding: 3px 0px;
+}
+
+.list-students tr td {
+    padding: 3px 0px;
+}
+
+.list-students td:first-child {
+    max-width: 100px;
+}
+
+.list-students button{
+    margin-left: 2px;
+}
+
+.list-students button:hover{
+    opacity: 0.5;
+}
+
+.table-hover tbody tr:hover {
+    color: #212529;
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.thead-dark th {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #454d55;
+  }
+
+  #one {
+      text-align: center;
+      font-weight: bold;
+  }
