@@ -43,16 +43,16 @@ export default function Profile() {
 
     }, [userEmail]);
 
-    useEffect(() => {
-        api.get('profiledescription', {
-            headers: {
-                // Authorization: userEmail,
-                Authorization_student: id_student
-            },
-        }).then(response => {
-            setStudents(response.data);
-        });
-    }, [userEmail]);
+    // useEffect(() => {
+    //     api.get('profiledescription', {
+    //         headers: {
+    //             // Authorization: userEmail,
+    //             Authorization_student: id_student
+    //         },
+    //     }).then(response => {
+    //         setStudents(response.data);
+    //     });
+    // }, [userEmail]);
 
 
     // //listando todos os estudantes cadastrados por um certo usuário

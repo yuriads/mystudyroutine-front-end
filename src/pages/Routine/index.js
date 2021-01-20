@@ -46,9 +46,10 @@ export default function Profile() {
     }, [userId]);
 
 
-    students.map(student => (
-        student.date_start
-    ))
+    // students.map(student => (
+    //     student.date_start
+    // // alert(student.date_start)
+    // ))
 
     useEffect(() => {
         api.get('profilestudent', {
@@ -60,6 +61,23 @@ export default function Profile() {
             setSubjects(response.data);
         });
     }, [userId]);
+
+    // if (1) {
+    //     try {
+    //         api.get('profilestudent', {
+    //             headers: {
+    //                 Authorization_student: userId,
+    //                 // Authorization_student: id_student
+    //             },
+    //         }).then(response => {
+    //             setSubjects(response.data);
+    //         });
+    //     } catch (err) {
+    //         alert('Operação não permitida')
+    //     }
+    // } else {
+    //     alert('Não está no dia de começar.')
+    // }
 
 
     // //listando todos os estudantes cadastrados por um certo usuário
@@ -257,6 +275,24 @@ export default function Profile() {
         }
     }
 
+    async function onClickWeek() {
+        try {
+            await api.put(`profileweek`, 0, {
+                headers: {
+                    Authorization_student: userId,
+                }
+            });
+            let weekDisable = students.week + 2;
+            alert("Você iniciou a semana " + weekDisable);
+            window.location.reload();
+
+            //setSubjects(subjects.filter(subject => (subject.id !== id)));
+        } catch (err) {
+            alert('Erro ao atualizar semana');
+        }
+        window.location.reload();
+    }
+
     return (
         <div className="profile-container">
             <header>
@@ -276,10 +312,27 @@ export default function Profile() {
             <h3>Semana</h3>
 
             <div className="rotina-semana">
-                <button className="button">1</button>
-                <button className="button">2</button>
-                <button className="button">3</button>
-                <button className="button">4</button>
+                <button
+                    className="button"
+                    onClick={() => onClickWeek()}
+                    disabled={students.week >= 0}
+                >1</button>
+                <button className="button"
+                    className="button"
+                    onClick={() => onClickWeek()}
+                    disabled={students.week >= 1}
+                >2</button>
+                <button className="button"
+                    className="button"
+                    onClick={() => onClickWeek()}
+                    disabled={students.week >= 2}
+                >3</button>
+                <button className="button"
+                    className="button"
+                    onClick={() => onClickWeek()}
+                    disabled={students.week >= 3}
+                >4</button>
+
             </div>
 
             <div className="dia-semana">

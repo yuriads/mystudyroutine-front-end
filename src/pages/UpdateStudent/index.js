@@ -107,12 +107,12 @@ export default function UpdateSubject(props) {
                 <section>
                     <img src={logoImg} alt="My Study Routine" />
 
-                    <h1>Atualizar Alunos</h1>
-                    <p>Coloque os dados do aluno</p>
+                    <h1>Atualizar aluno</h1>
+                    <p>Coloque os dados do aluno para atualizar</p>
 
                     <Link className="back-link" to="/students">
                         <FiArrowLeft size={16} color="#1E90FF" />
-                        Voltar a lista de alunos
+                        Voltar para lista de alunos
                     </Link>
                 </section>
 

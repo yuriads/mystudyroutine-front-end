@@ -93,12 +93,12 @@ export default function UpdateSubject(props) {
                 <section>
                     <img src={logoImg} alt="My Study Routine" />
 
-                    <h1>Atualizar um horário</h1>
+                    <h1>Atualizar horário</h1>
                     <p>Coloque o nome e os horários da disciplina</p>
 
                     <Link className="back-link" to="/profile">
                         <FiArrowLeft size={16} color="#1E90FF" />
-                        Voltar a página inical
+                        Voltar para página inical
                     </Link>
                 </section>
 

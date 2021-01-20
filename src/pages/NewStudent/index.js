@@ -80,7 +80,7 @@ export default function NewStudent() {
                 <section>
                     <img src={logoImg} alt="My Study Routine" />
 
-                    <h1>Cadastrar Novo Aluno</h1>
+                    <h1>Cadastrar novo aluno</h1>
                     <p>Coloque os dados do aluno</p>
 
                     <Link className="back-link" to="/students">
