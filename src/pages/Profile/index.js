@@ -12,15 +12,6 @@ export default function Profile() {
     const [students, setStudents] = useState([]);
     const [day, setDay] = useState('');
 
-
-
-    // const [id, setId] = useState('');
-    // const [registration, setRegistration] = useState('');
-    // const [name, setName] = useState('');
-    // const [shift, setShift] = useState('');
-    // const [course, setCourse] = useState('');
-    // const [description, setDescription] = useState('');
-
     const history = useHistory();
 
     const userEmail = localStorage.getItem('userEmail');
@@ -43,37 +34,6 @@ export default function Profile() {
 
     }, [userEmail]);
 
-    // useEffect(() => {
-    //     api.get('profiledescription', {
-    //         headers: {
-    //             // Authorization: userEmail,
-    //             Authorization_student: id_student
-    //         },
-    //     }).then(response => {
-    //         setStudents(response.data);
-    //     });
-    // }, [userEmail]);
-
-
-    // //listando todos os estudantes cadastrados por um certo usuário
-    // useEffect(() => {
-    //     api.get('students', {
-    //         headers: {
-    //             Authorization: userEmail,
-    //         }
-    //     }).then(response => {
-    //         setStudents(response.data);
-
-    //         //setId();
-    //         // setRegistration(students.registration);
-    //         // setName(students.name);
-    //         // setShift(students.shift);
-    //         // setCourse(students.course);
-    //         // setDescription(students.description);
-
-    //     });
-    // }, [userEmail]);
-
     async function handleDeleteSubject(id) {
         try {
             await api.delete(`subjects/${id}`, {
@@ -83,7 +43,6 @@ export default function Profile() {
 
             });
 
-            //depois usar a font FIRA CODE - FONT LIGATURES
             setSubjects(subjects.filter(subject => (subject.id !== id)));
         } catch (err) {
             alert('Erro ao deletar, tente novamente!');
@@ -101,8 +60,6 @@ export default function Profile() {
 
             });
 
-            //depois usar a font FIRA CODE - FONT LIGATURES
-            //setSubjects(subjects.filter(subject => (subject.id !== id)));
         } catch (err) {
             alert('Erro ao deletar, tente novamente!');
         }
@@ -115,14 +72,6 @@ export default function Profile() {
 
         history.push('/loginpro');
     };
-
-    // function handleSelectStudent(e) {
-    //     students.map(student => (
-    //         setId(student.id)
-    //     ))
-    // }
-
-
 
     return (
         <div className="profile-container">
@@ -140,36 +89,6 @@ export default function Profile() {
             </header>
 
             <h1>Aluno: {name_student}</h1>
-            {/* <h2>Semana 1</h2> */}
-
-            {/* <div className="aluno">
-
-                <select onClick={handleSelectStudent}>
-                    <option disabled selected>
-                        Selecione um aluno
-                    </option>
-                    {students.map(student => (
-
-                        <option value={students}>{student.name}</option>
-                    ))}
-                </select>
-
-                <Link to={'/students/new'}>
-                    <buttton className="button">Cadastrar</buttton>
-                </Link>
-
-                <Link to={`/students/update/${id}`}>
-                    <buttton className="button">Atualizar</buttton>
-                </Link>
-
-                <Link to={'/students/new'}>
-                    <buttton className="button">Deletar</buttton>
-                </Link>
-
-                <Link to={'/students/new'}>
-                    <buttton className="button">Imprimir</buttton>
-                </Link>
-            </div> */}
 
             <h2>Rotina de estudo</h2>
 
@@ -179,7 +98,6 @@ export default function Profile() {
                     <table>
                         <caption>Segunda</caption>
                         <thead>
-                            {/* <h2>Segunda</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -221,7 +139,6 @@ export default function Profile() {
                     <table>
                         <caption>Terça</caption>
                         <thead>
-                            {/* <h2>Terça</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -263,7 +180,6 @@ export default function Profile() {
                     <table>
                         <caption>Quarta</caption>
                         <thead>
-                            {/* <h2>Quarta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -304,7 +220,6 @@ export default function Profile() {
                     <table>
                         <caption>Quinta</caption>
                         <thead>
-                            {/* <h2>Quinta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -345,7 +260,6 @@ export default function Profile() {
                     <table>
                         <caption>Sexta</caption>
                         <thead>
-                            {/* <h2>Sexta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -386,7 +300,6 @@ export default function Profile() {
                     <table>
                         <caption>Sábado</caption>
                         <thead>
-                            {/* <h2>Sábado</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -427,7 +340,6 @@ export default function Profile() {
                     <table>
                         <caption>Domingo</caption>
                         <thead>
-                            {/* <h2>Domingo</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
@@ -464,7 +376,6 @@ export default function Profile() {
                     </table>
                     <div className="obs">
                         <h2>Observções</h2>
-                        {/* <textarea name="" id="" cols="30" rows="5"> */}
                         <div className="aluno">
 
                             <table>
@@ -477,8 +388,6 @@ export default function Profile() {
                                 </tbody>
                             </table>
                         </div>
-                        {/* </textarea> */}
-                        {/* <button className="button">Adicionar Obs</button> */}
                     </div>
                 </div>
             </div>

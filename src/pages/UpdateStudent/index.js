@@ -51,14 +51,6 @@ export default function UpdateSubject(props) {
         }).then(response => {
             setStudents(response.data);
 
-            // subjects.filter(subject => (subject.id == props.match.params.id))
-            //     .map(subject => (
-            //         setDay(subject.day),
-            //         setName(subject.name),
-            //         setStart(subject.start),
-            //         setFinish(subject.finish)
-            // ))
-
             setRegistration(props.match.params.registration);
             setName(props.match.params.name);
             setShift(props.match.params.shift);

@@ -35,7 +35,6 @@ export default function Student() {
                 }
             });
 
-            //depois usar a font FIRA CODE - FONT LIGATURES
             setStudents(students.filter(student => (student.id !== id)));
         } catch (err) {
             alert('Erro ao deletar, tente novamente!');
@@ -95,11 +94,9 @@ export default function Student() {
                                 <td>{student.date_finish}</td>
                                 <td id="one">{student.performance}</td>
                                 <td>
-                                    {/* <Link to={"profile"}> */}
                                     <button onClick={() => handleStudent(student.id, student.name)} type="button">
                                         <FiCheck size={20} color="008000" />
                                     </button>
-                                    {/* </Link> */}
                                     <Link to={`students/update/${student.id}/${student.registration}/${student.name}/${student.shift}/${student.course}/${student.date_start}/${student.date_finish}/${student.description}`}>
                                         <button type="button">
                                             <FiEdit size={20} color="1E90FF" />

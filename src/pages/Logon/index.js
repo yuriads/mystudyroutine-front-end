@@ -54,10 +54,6 @@ export default function Logon(){
                         <FiLogIn size={16} color="#1E90FF"/>
                         Fazer cadastro
                     </Link>
-                    {/* <Link className="back-link" to="/">
-                        <FiArrowLeft size={16} color="#1E90FF"/>
-                        Voltar ao início
-                    </Link> */}
                 </form>
             </section>
         </div>

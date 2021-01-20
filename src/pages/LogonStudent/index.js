@@ -43,11 +43,6 @@ export default function Logon(){
                         onChange={e => setId(e.target.value)}
                     />
                     <button className="button" type="submit">Entrar</button>
-
-                    {/* <Link className="back-link" to="/">
-                        <FiArrowLeft size={16} color="#1E90FF"/>
-                        Voltar ao início
-                    </Link> */}
                 </form>
             </section>
         </div>

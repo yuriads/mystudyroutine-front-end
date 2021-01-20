@@ -13,31 +13,14 @@ export default function Profile() {
     const [students, setStudents] = useState([]);
     const [day, setDay] = useState('');
 
-
-
-    // const [id, setId] = useState('');
-    // const [registration, setRegistration] = useState('');
-    // const [name, setName] = useState('');
-    // const [shift, setShift] = useState('');
-    // const [course, setCourse] = useState('');
-    // const [description, setDescription] = useState('');
-
     const history = useHistory();
 
     const userName = localStorage.getItem('userNameStudent');
     const userId = localStorage.getItem('userId');
 
-    // const id_student = localStorage.getItem('id_student');
-    // const name_student = localStorage.getItem('name_student');
-
-
-    //o useEfect recebe dois parâmetros, o primeiro é que a função irá executar e o segundo é quando ela irá executar
-
-
     useEffect(() => {
         api.get('profiledescription', {
             headers: {
-                // Authorization: userEmail,
                 Authorization_student: userId,
             },
         }).then(response => {
@@ -45,74 +28,15 @@ export default function Profile() {
         });
     }, [userId]);
 
-
-    // students.map(student => (
-    //     student.date_start
-    // // alert(student.date_start)
-    // ))
-
     useEffect(() => {
         api.get('profilestudent', {
             headers: {
                 Authorization_student: userId,
-                // Authorization_student: id_student
             },
         }).then(response => {
             setSubjects(response.data);
         });
     }, [userId]);
-
-    // if (1) {
-    //     try {
-    //         api.get('profilestudent', {
-    //             headers: {
-    //                 Authorization_student: userId,
-    //                 // Authorization_student: id_student
-    //             },
-    //         }).then(response => {
-    //             setSubjects(response.data);
-    //         });
-    //     } catch (err) {
-    //         alert('Operação não permitida')
-    //     }
-    // } else {
-    //     alert('Não está no dia de começar.')
-    // }
-
-
-    // //listando todos os estudantes cadastrados por um certo usuário
-    // useEffect(() => {
-    //     api.get('students', {
-    //         headers: {
-    //             Authorization: userEmail,
-    //         }
-    //     }).then(response => {
-    //         setStudents(response.data);
-
-    //         //setId();
-    //         // setRegistration(students.registration);
-    //         // setName(students.name);
-    //         // setShift(students.shift);
-    //         // setCourse(students.course);
-    //         // setDescription(students.description);
-
-    //     });
-    // }, [userEmail]);
-
-    // async function handleDeleteSubject(id) {
-    //     try {
-    //         await api.delete(`subjects/${id}`, {
-    //             headers: {
-    //                 Authorization: id_student,
-    //             },
-    //         });
-
-    //         //depois usar a font FIRA CODE - FONT LIGATURES
-    //         setSubjects(subjects.filter(subject => (subject.id !== id)));
-    //     } catch (err) {
-    //         alert('Erro ao deletar, tente novamente!');
-    //     }
-    // }
 
     function handleLogout() {
         localStorage.clear();
@@ -120,18 +44,10 @@ export default function Profile() {
         history.push('/');
     };
 
-    // function handleSelectStudent(e) {
-    //     students.map(student => (
-    //         setId(student.id)
-    //     ))
-    // }
-
     async function onClick(id, day, start, disable) {
-        //alert(start)
 
         const start_verificar1 = start.substr(0, 2);
         const start_verificar2 = parseInt(start.substr(-2)) + 10;
-        //start_verificar.setMinutes(start.getMinutes() + 10);
 
         const start_verificar = (start_verificar1 + ':' + start_verificar2);
 
@@ -155,26 +71,6 @@ export default function Profile() {
         } else {
             start1 = hoje.getHours() + ':' + hoje.getMinutes();
         }
-
-        // alert(id)
-        // alert(hours)
-        // alert(minutes)
-        // alert(typeof (parseInt(disable)))
-        // alert(disable);
-        //alert(typeof(id))
-        // alert(minutes);
-        // alert(typeof(minutes));
-        // alert(hoje.getMinutes())
-        // alert(start1);
-        // alert(typeof(start1));
-        // alert(start);
-        // alert(day1)
-        // alert(day)
-        // alert(typeof(start_verificar1));
-        // alert(start_verificar1);
-        // alert(start_verificar1.substr(2));
-        // alert(start_verificar2);
-        // alert(start_verificar);
 
         switch (day1) {
             case 0:
@@ -202,8 +98,6 @@ export default function Profile() {
                 alert('Erro ao selecionar dia');
         }
 
-        //alert(day2);
-
         if (day !== day2) {
             alert("Hoje é " + day2);
             return;
@@ -220,7 +114,6 @@ export default function Profile() {
                 });
                 window.location.reload();
 
-                //setSubjects(subjects.filter(subject => (subject.id !== id)));
             } catch (err) {
                 alert('Erro ao desabilitar disciplina');
             }
@@ -252,7 +145,6 @@ export default function Profile() {
             });
             window.location.reload();
 
-            //setSubjects(subjects.filter(subject => (subject.id !== id)));
         } catch (err) {
             alert('Erro ao desabilitar disciplina');
         }
@@ -286,7 +178,6 @@ export default function Profile() {
             alert("Você iniciou a semana " + weekDisable);
             window.location.reload();
 
-            //setSubjects(subjects.filter(subject => (subject.id !== id)));
         } catch (err) {
             alert('Erro ao atualizar semana');
         }
@@ -300,9 +191,6 @@ export default function Profile() {
                 <span>Bem vindo, {userName}</span>
                 <section>
                     <Link className="button" onClick={performance}>Rendimento</Link>
-                    {/* <Link to={'/students'}>
-                        <button className="button">Alunos</button>
-                    </Link> */}
                     <Link className="button" onClick={handleLogout}>Sair</Link>
                 </section>
             </header>
@@ -341,18 +229,10 @@ export default function Profile() {
                     <table>
                         <caption>Segunda</caption>
                         <thead>
-                            {/* <h2>Segunda</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'segunda'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
 
@@ -363,16 +243,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                            s        <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -392,18 +262,10 @@ export default function Profile() {
                     <table>
                         <caption>Terça</caption>
                         <thead>
-                            {/* <h2>Terça</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'terça'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
 
@@ -414,16 +276,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -443,18 +295,10 @@ export default function Profile() {
                     <table>
                         <caption>Quarta</caption>
                         <thead>
-                            {/* <h2>Quarta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'quarta'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -464,16 +308,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -493,18 +327,10 @@ export default function Profile() {
                     <table>
                         <caption>Quinta</caption>
                         <thead>
-                            {/* <h2>Quinta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'quinta'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -514,16 +340,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -543,18 +359,10 @@ export default function Profile() {
                     <table>
                         <caption>Sexta</caption>
                         <thead>
-                            {/* <h2>Sexta</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'sexta'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -564,16 +372,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -593,18 +391,10 @@ export default function Profile() {
                     <table>
                         <caption>Sábado</caption>
                         <thead>
-                            {/* <h2>Sábado</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'sábado'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -614,16 +404,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"
@@ -643,18 +423,10 @@ export default function Profile() {
                     <table>
                         <caption>Domingo</caption>
                         <thead>
-                            {/* <h2>Domingo</h2> */}
                             <tr>
                                 <th>Disciplina</th>
                                 <th>Início</th>
                                 <th>Término</th>
-                                {/* <th>
-                                    <Link to={`/subjects/new/${'domingo'}`}>
-                                        <button type="button">
-                                            <FiPlusCircle size={20} color="1E90FF" />
-                                        </button>
-                                    </Link>
-                                </th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -664,16 +436,6 @@ export default function Profile() {
                                         <td>{subject.name}</td>
                                         <td>{subject.start}</td>
                                         <td>{subject.finish}</td>
-                                        {/* <td>
-                                            <Link to={`subjects/update/${subject.id}/${subject.day}/${subject.name}/${subject.start}/${subject.finish}`}>
-                                                <button type="button">
-                                                    <FiEdit size={20} color="1E90FF" />
-                                                </button>
-                                            </Link>
-                                            <button onClick={() => handleDeleteSubject(subject.id)} type="button">
-                                                <FiX size={20} color="e02041" />
-                                            </button>
-                                        </td> */}
                                         <td>
                                             <button
                                                 type="button"

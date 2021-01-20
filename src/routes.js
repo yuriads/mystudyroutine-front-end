@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
-// import Home from './pages/Home';
 import Logon from './pages/Logon';
 import LogonStudent from './pages/LogonStudent';
 import Register from './pages/Register';
@@ -17,9 +16,6 @@ export default function Routes() {
     return (
         <BrowserRouter>
             <Switch>
-                {/* <Route path="/" exact component={Home} /> */}
-
-                {/* <Route path="/login" component={LogonStudent} /> */}
                 <Route path="/" exact component={LogonStudent} />
 
                 <Route path="/loginpro" component={Logon} />
