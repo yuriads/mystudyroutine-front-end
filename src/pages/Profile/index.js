@@ -34,6 +34,16 @@ export default function Profile() {
 
     }, [userEmail]);
 
+    useEffect(() => {
+        api.get('profiledescription', {
+            headers: {
+                Authorization_student: id_student
+            },
+        }).then(response => {
+            setStudents(response.data);
+        });
+    }, [userEmail]);
+
     async function handleDeleteSubject(id) {
         try {
             await api.delete(`subjects/${id}`, {
@@ -381,9 +391,7 @@ export default function Profile() {
                             <table>
                                 <tbody>
                                     <label>
-                                        {students.map(student => (
-                                            student.description
-                                        ))}
+                                        {students.description}
                                     </label>
                                 </tbody>
                             </table>
